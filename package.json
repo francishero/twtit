@@ -12,10 +12,12 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "cross-env": "^5.1.1",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mongoose": "^4.13.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.10.0",

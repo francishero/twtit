@@ -1,6 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
+import './config/db' // to connect and run mongodb 
+
 const app = express(); // create an instance of express
 
 const PORT = process.env.PORT || 3000; // create the port
