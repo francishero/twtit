@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=dev nodemon --exec babel-node src/index.js"
+    "dev": "cross-env NODE_ENV=dev nodemon --exec babel-node src/index.js",
+    "prettier": "prettier --single-quote --print-width 80 --trailing-comma all --write 'src/**/*.js'"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-express": "^1.2.0",
     "body-parser": "^1.18.2",
     "cross-env": "^5.1.1",
     "express": "^4.16.2",
+    "graphql": "^0.11.7",
+    "graphql-tools": "^2.7.2",
     "mongoose": "^4.13.0"
   },
   "devDependencies": {
