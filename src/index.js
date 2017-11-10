@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import bodyParser from 'body-parser';
+import morgan from 'morgan'
 import { graphiqlExpress, graphqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools'
 import {createServer} from 'http'
@@ -8,6 +9,7 @@ import './config/db' // to connect and run mongodb
 import typeDefs from './graphql/schema'
 import resolvers from './graphql/resolvers'
 import constants from './config/constants'
+import mocks from './mocks'
 
 const app = express(); // create an instance of express
 
@@ -19,6 +21,8 @@ const schema = makeExecutableSchema({
 
 
 app.use(bodyParser.json()); // add body-parser as the json parser middleware
+app.use(morgan('dev'))
+
 
 // hook up express and graphql IDE
 app.use('/graphiql', graphiqlExpress({
@@ -32,10 +36,16 @@ app.use(constants.GRAPHQL_PATH, graphqlExpress({
 
 const graphQlServer = createServer(app)
 
-graphQlServer.listen(constants.PORT, err => {
+// we get the mocks first then run the server 
+mocks().then(() => {
+
+	graphQlServer.listen(constants.PORT, err => {
   if (err) {
     console.error(err);
   } else {
     console.log(`App listen on port: ${constants.PORT}`);
   }
 });
+	
+})
+
