@@ -1,7 +1,7 @@
 import Tweet from '../../models/Tweet'
 
 export default {
-	// get a single tweet from the database using the id 
+	// get a single tweet from the database using the id  
   getTweet: (_, { _id }) => Tweet.findById(_id),
   // this is the resolver to get all tweets from the database 
   getTweets:  () => Tweet.find({}).sort({ createdAt: -1}),
@@ -21,3 +21,4 @@ export default {
     }
   }
 }
+

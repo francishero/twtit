@@ -1,6 +1,6 @@
 import faker from 'faker';
-
 import Tweet from '../models/Tweet';
+import User from '../models/User'
 
 const TWEETS_TOTAL = 10;
 
@@ -8,6 +8,7 @@ export default async () => {
   try {
     // remove all the tweets when we rerun
     await Tweet.remove();
+    await User.remove()
 
     // create an array of size 10 and populate it with fake tweets
     await Array.from({ length: TWEETS_TOTAL }).forEach(async () => {
@@ -19,3 +20,4 @@ export default async () => {
     throw error;
   }
 }
+
