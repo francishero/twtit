@@ -20,6 +20,11 @@ scalar Date
     createdAt: Date!
     updatedAt: Date!
   }
+
+  type Auth {
+    token: String!
+  }
+
   type Query {
     getTweet(_id: ID!): Tweet
     getTweets: [Tweet]
@@ -29,8 +34,8 @@ scalar Date
     createTweet(text: String!): Tweet,
     updateTweet(_id: ID!, text:String): Tweet,
     deleteTweet(_id: ID!): Status
-    signup(email: String!, fullName: String!, avatar: String, username: String, password: String! ): User
-    login(email: String!, password: String!): User
+    signup(email: String!, fullName: String!, avatar: String, username: String, password: String! ): Auth!
+    login(email: String!, password: String!): Auth!
   }
 
 

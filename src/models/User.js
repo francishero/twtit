@@ -1,5 +1,7 @@
 import mongoose, { Schema } from 'mongoose'
 import { hashSync, compareSync } from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import constants from '../config/constants'
 
 const userSchema = new Schema({
   username: {
@@ -32,6 +34,9 @@ userSchema.methods = {
 
   authenticateUser(password) {
     return compareSync(password, this.password)
+  },
+  createToken() {
+    return jwt.sign({ _id: this._id }, constants.JWT_SECRET ) 
   }
 }
 export default mongoose.model('User', userSchema)

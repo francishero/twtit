@@ -1,38 +1,16 @@
 /* eslint-disable no-console */
 import express from 'express';
-import bodyParser from 'body-parser';
-import morgan from 'morgan'
-import { graphiqlExpress, graphqlExpress } from 'apollo-server-express';
-import { makeExecutableSchema } from 'graphql-tools'
 import {createServer} from 'http'
 import './config/db' // to connect and run mongodb 
-import typeDefs from './graphql/schema'
-import resolvers from './graphql/resolvers'
-import constants from './config/constants'
 import mocks from './mocks'
+import constants from './config/constants'
+import middleware from './config/middleware'
 
 const app = express(); // create an instance of express
 
-const schema = makeExecutableSchema({
-	typeDefs,
-	resolvers
-})
 
-
-
-app.use(bodyParser.json()); // add body-parser as the json parser middleware
-app.use(morgan('dev'))
-
-
-// hook up express and graphql IDE
-app.use('/graphiql', graphiqlExpress({
-	endpointURL: constants.GRAPHQL_PATH
-}))
-
-// now we setup the graphql 
-app.use(constants.GRAPHQL_PATH, graphqlExpress({
-	schema
-}))
+// we put everything in config/middleware
+middleware(app)
 
 const graphQlServer = createServer(app)
 
