@@ -9,7 +9,8 @@ export default {
 	// not function calls !!!
   Query: {
   	getTweet: tweetResolvers.getTweet,
-    getTweets: tweetResolvers.getTweets 
+    getTweets: tweetResolvers.getTweets,
+     me: userResolvers.me
   },
   Mutation: {
   	createTweet: tweetResolvers.createTweet,
@@ -17,5 +18,6 @@ export default {
   	deleteTweet: tweetResolvers.deleteTweet,
     signup: userResolvers.signup,
     login: userResolvers.login
+
   }
 }

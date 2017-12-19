@@ -4,3 +4,4 @@ export default {
   GRAPHQL_PATH: '/graphql',
   JWT_SECRET: 'secret'
 }
+

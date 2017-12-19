@@ -21,6 +21,17 @@ scalar Date
     updatedAt: Date!
   }
 
+  type Me {
+     _id: ID!
+    username: String
+    email: String!
+    firstName: String
+    lastName: String 
+    avatar: String 
+    createdAt: Date!
+    updatedAt: Date!
+  }
+
   type Auth {
     token: String!
   }
@@ -28,6 +39,7 @@ scalar Date
   type Query {
     getTweet(_id: ID!): Tweet
     getTweets: [Tweet]
+    me: Me 
   }
   
   type Mutation {

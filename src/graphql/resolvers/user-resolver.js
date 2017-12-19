@@ -1,6 +1,19 @@
 import User from '../../models/User'
+import { requireAuth } from '../../services/auth'
 
 export default {
+
+  // me is the user himself 
+  me: async (_, args, { user }) => {
+    
+    try {
+     const me = await requireAuth(user)
+      return me
+    } catch(e) {
+      throw e
+    }
+  }, 
+
   signup:  async (_, {fullName, ...rest}) => {
     const [firstName, ...lastName] = fullName.split(' ')
     const user = await User.create({
@@ -21,7 +34,9 @@ export default {
       throw new Error('Password does not match')
     }
 
-    return user
+    return {
+      token: user.createToken()
+    }
   }
 }
 

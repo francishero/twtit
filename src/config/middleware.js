@@ -17,7 +17,7 @@ const schema = makeExecutableSchema({
 async function auth (req, res, next) {
   try {
     const token = req.headers.authorization 
-    if (token !== null) {
+    if (token != null) {
       const user = await decodeToken(token)
       req.user = user 
     } else {
@@ -28,11 +28,12 @@ async function auth (req, res, next) {
     throw e 
   }
 }
+
 export default app => {
 
 app.use(bodyParser.json()); // add body-parser as the json parser middleware
 app.use(morgan('dev'))
-app.use(auth) // defined above 
+ app.use(auth) // defined above 
 // hook up express and graphql IDE
 app.use('/graphiql', graphiqlExpress({
   endpointURL: constants.GRAPHQL_PATH
