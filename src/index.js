@@ -15,7 +15,7 @@ middleware(app)
 const graphQlServer = createServer(app)
 
 // we get the mocks first then run the server 
-mocks().then(() => {
+// mocks().then(() => {
 
 	graphQlServer.listen(constants.PORT, err => {
   if (err) {
@@ -25,5 +25,5 @@ mocks().then(() => {
   }
 });
 	
-})
+// })
 

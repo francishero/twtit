@@ -8,6 +8,8 @@ export async function requireAuth(user) {
     throw new Error('Unauthorized');
   }
 
+  // in case user tries to access deleted account
+  
   const me = await User.findById(user._id);
 
   if (!me) {

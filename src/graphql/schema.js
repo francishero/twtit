@@ -7,6 +7,8 @@ scalar Date
   type Tweet {
     _id: ID!,
     text: String!
+    user: User!
+    favoriteCount: Int!
     createdAt: Date!
     updatedAt: Date!
   }
@@ -39,6 +41,7 @@ scalar Date
   type Query {
     getTweet(_id: ID!): Tweet
     getTweets: [Tweet]
+    getUserTweets: [Tweet]
     me: Me 
   }
   
